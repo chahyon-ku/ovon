@@ -7,7 +7,8 @@ defaults:
     - relabel_teacher_actions
   - /habitat/task/measurements:
     - frontier_exploration_map
-  - objectnav_stretch_hm3d
+  - ../tasks:
+    - objectnav_stretch_hm3d
   - override /habitat/task/lab_sensors:
     - objnav_explorer
     - clip_objectgoal_sensor

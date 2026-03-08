@@ -65,6 +65,7 @@ def cache_embeddings_siglip(
 
 def load_categories_from_dataset(path):
     files = glob.glob(os.path.join(path, "*json.gz"))
+    assert len(files) > 0, f"No dataset files found in {os.path.join(path, '*json.gz')}!"
 
     categories = []
     for f in tqdm(files):
@@ -80,10 +81,10 @@ def main(dataset_path, output_path, use_siglip):
         dataset_path.replace("train", "val_seen")
     )
     val_unseen_easy_categories = load_categories_from_dataset(
-        dataset_path.replace("train", "val_unseen_easy")
+        dataset_path.replace("train", "val_seen_synonyms")
     )
     val_unseen_hard_categories = load_categories_from_dataset(
-        dataset_path.replace("train", "val_unseen_hard")
+        dataset_path.replace("train", "val_unseen")
     )
 
     # Print the first 5 categories of each split
